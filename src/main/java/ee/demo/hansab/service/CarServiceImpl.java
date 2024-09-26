@@ -6,25 +6,27 @@ import ee.demo.hansab.repository.CarRepo;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
+@Component
 public class CarServiceImpl implements CarService {
 
   private final CarRepo carRepo;
 
   @Override
   public List<CarDto> fetchCars() {
-    var cars = carRepo.findAll();
-    return cars
+    return carRepo
+        .findAll()
         .stream()
         .map(this::asCarDto)
         .collect(Collectors.toList());
   }
 
   @Override
-  public CarDto fetchCar(Long carId) {
+  public CarDto fetchCarBy(Long id) {
     var car = carRepo
-        .findById(carId)
+        .findById(id)
         .orElseThrow();
     return CarDto
         .builder()
