@@ -1,5 +1,6 @@
 package ee.demo.hansab.controller;
 
+import ee.demo.hansab.dto.CarDto;
 import ee.demo.hansab.dto.PersonDto;
 import ee.demo.hansab.service.PersonService;
 import java.util.List;
@@ -32,5 +33,13 @@ public class PersonController {
     return ResponseEntity
         .status(HttpStatus.OK)
         .body(user);
+  }
+
+  @GetMapping("/users/{id}/cars")
+  public ResponseEntity<List<CarDto>> fetchCarsBy(@PathVariable Long id) {
+    var cars = service.fetchCarsBy(id);
+    return ResponseEntity
+        .status(HttpStatus.OK)
+        .body(cars);
   }
 }

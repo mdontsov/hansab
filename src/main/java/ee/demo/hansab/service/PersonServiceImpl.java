@@ -34,6 +34,7 @@ public class PersonServiceImpl implements PersonService {
         .builder()
         .id(user.getId())
         .name(user.getName())
+        .cars(user.getCars())
         .build();
   }
 
