@@ -1,4 +1,4 @@
-INSERT INTO `car` (make, model, numberplate)
+INSERT INTO car (make, model, numberplate)
 VALUES
     ('Lada', '2101', '123ASD'),
     ('Kia', 'Sorento', '534TTT'),
@@ -10,7 +10,7 @@ VALUES
     ('Audi', 'A6', '876OUI'),
     ('BMW', '740', '112YUI');
 
-INSERT INTO `user` (name)
+INSERT INTO person (name)
 VALUES
     ('Teet Järveküle'),
     ('Pille Purk'),
@@ -18,7 +18,7 @@ VALUES
     ('Külli Kukk'),
     ('Teet Kruus');
 
-INSERT INTO `user_car` (user_id, car_id)
+INSERT INTO person_car (person_id, car_id)
 VALUES
     (1, 1),
     (1, 2),

@@ -1,22 +1,24 @@
 package ee.demo.hansab.service;
 
 import ee.demo.hansab.dto.CarDto;
-import ee.demo.hansab.dto.UserDto;
+import ee.demo.hansab.dto.PersonDto;
 import ee.demo.hansab.entity.Car;
-import ee.demo.hansab.entity.User;
-import ee.demo.hansab.repository.UserRepo;
+import ee.demo.hansab.entity.Person;
+import ee.demo.hansab.repository.PersonRepo;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+@Component
+public class PersonServiceImpl implements PersonService {
 
-  private final UserRepo userRepo;
+  private final PersonRepo personRepo;
 
   @Override
-  public List<UserDto> fetchUsers() {
-    return userRepo
+  public List<PersonDto> fetchPersons() {
+    return personRepo
         .findAll()
         .stream()
         .map(this::asUserDto)
@@ -24,36 +26,37 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public UserDto fetchUser(Long userId) {
-    var user = userRepo
-        .findById(userId)
+  public PersonDto fetchPersonBy(Long id) {
+    var user = personRepo
+        .findById(id)
         .orElseThrow();
-    return UserDto
+    return PersonDto
         .builder()
         .id(user.getId())
         .name(user.getName())
+        .cars(user.getCars())
         .build();
   }
 
   @Override
-  public List<CarDto> fetchUserCars(Long userId) {
-    var user = userRepo
+  public List<CarDto> fetchCarsBy(Long userId) {
+    var user = personRepo
         .findById(userId)
         .orElseThrow();
 
-    var cars = user.getCars();
-    return cars
+    return user
+        .getCars()
         .stream()
         .map(this::asCarDto)
         .collect(Collectors.toList());
   }
 
-  private UserDto asUserDto(User user) {
-    return UserDto
+  private PersonDto asUserDto(Person person) {
+    return PersonDto
         .builder()
-        .id(user.getId())
-        .name(user.getName())
-        .cars(user.getCars())
+        .id(person.getId())
+        .name(person.getName())
+        .cars(person.getCars())
         .build();
   }
 

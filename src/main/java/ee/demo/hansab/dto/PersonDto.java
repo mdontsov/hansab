@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class UserDto {
+public class PersonDto {
 
   Long id;
 
