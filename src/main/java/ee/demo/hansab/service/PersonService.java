@@ -6,9 +6,12 @@ import java.util.List;
 
 public interface PersonService {
 
-  List<PersonDto> fetchPersons();
+  List<PersonDto> fetchPersons(
+      String filter,
+      String sorting
+  );
 
   PersonDto fetchPersonBy(Long id);
 
-  List<CarDto> fetchCarsBy(Long userId);
+  List<CarDto> fetchCarsBy(Long personId);
 }

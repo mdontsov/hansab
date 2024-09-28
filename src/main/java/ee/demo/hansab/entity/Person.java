@@ -9,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import java.util.Set;
+import java.util.List;
 import lombok.Data;
 
 @Entity
@@ -25,5 +25,5 @@ public class Person {
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "person_car", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "car_id"))
-  private Set<Car> cars;
+  private List<Car> cars;
 }

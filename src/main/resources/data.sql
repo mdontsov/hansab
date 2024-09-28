@@ -12,7 +12,7 @@ VALUES
 
 INSERT INTO person (name)
 VALUES
-    ('Teet Järveküle'),
+    ('Teet Järveküla'),
     ('Pille Purk'),
     ('Mati Kaal'),
     ('Külli Kukk'),

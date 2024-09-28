@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS App with Spring Boot</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5" ng-controller="MainController">
+    <h1 class="text-center">Search, Filter and Sort with AngularJS and Bootstrap</h1>
+
+    <!-- Person Search and Filter Section -->
+    <h2>Persons</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <input type="text" ng-model="personSearchQuery" placeholder="Search persons" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary" ng-click="searchPersons()">Search Persons</button>
+        </div>
+    </div>
+
+    <!-- Sorting for Persons -->
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label for="sortPersons">Sort Persons by Name</label>
+            <select id="sortPersons" ng-model="personSortDirection" class="form-control">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button class="btn btn-secondary" ng-click="sortPersons()">Sort Persons</button>
+        </div>
+    </div>
+
+    <table class="table table-striped mt-4">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="person in filteredPersons">
+            <td>{{ person.name }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Car Search and Filter Section -->
+    <h2>Cars</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <input type="text" ng-model="carSearchQuery" placeholder="Search cars" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary" ng-click="searchCars()">Search Cars</button>
+        </div>
+    </div>
+
+    <!-- Sorting for Cars -->
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label for="sortCars">Sort Cars by Numberplate</label>
+            <select id="sortCars" ng-model="carSortDirection" class="form-control">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button class="btn btn-secondary" ng-click="sortCars()">Sort Cars</button>
+        </div>
+    </div>
+
+    <table class="table table-striped mt-4">
+        <thead>
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Numberplate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="car in filteredCars">
+            <td>{{ car.make }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.numberplate }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- jQuery (required for Bootstrap's JS) -->
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AngularJS -->
+<script src="/node_modules/angular/angular.min.js"></script>
+<!-- AngularJS App Code -->
+<script src="/app/app.js"></script>
+</body>
+</html>

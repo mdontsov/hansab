@@ -5,7 +5,10 @@ import java.util.List;
 
 public interface CarService {
 
-  List<CarDto> fetchCars();
+  List<CarDto> fetchCars(
+      String filter,
+      String sorting
+  );
 
   CarDto fetchCarBy(Long id);
 }
