@@ -19,11 +19,11 @@ public class CarController {
   private final CarService service;
 
   @GetMapping
-  public ResponseEntity<List<CarDto>> fetchPersons(
+  public ResponseEntity<List<CarDto>> fetchCars(
       @RequestParam(value = "find", required = false) String findBy,
       @RequestParam(value = "sort", required = false) String sortingOrder
   ) {
-    List<CarDto> cars = service.fetchCars(findBy, sortingOrder);
+    var cars = service.fetchCars(findBy, sortingOrder);
     return cars.isEmpty() ?
         ResponseEntity.noContent()
             .build() :
